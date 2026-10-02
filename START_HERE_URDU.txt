@@ -1,0 +1,21 @@
+NEWS SKY - COMPLETE REDESIGNED REACT WEBSITE
+
+1. ZIP extract karo.
+2. Poora NewsSky_Professional folder VS Code mein open karo.
+3. VS Code Terminal khol ke likho: npm install
+4. .env.example ki copy bana kar file ka naam .env kar do.
+5. .env mein VITE_GNEWS_API_KEY= ke baad apni GNews API key paste karo.
+   (Weather bina key ke kaam karega, news ke liye key chahiye.)
+6. Terminal mein likho: npm run dev
+7. Terminal mein jo localhost link aaye use browser mein kholo.
+
+Included routes:
+/ = beautiful Home
+/news = news category, search, favorites + recent search
+/weather = live weather + 4-day forecast
+
+EXISTING PROJECT mein replace karne ke bajaye pehle is folder ko ALAG
+run karke check karo, phir apni customization karo.
+
+NOTE: Browser mein .env wali VITE_ key secret nahi rehti. Real deployment
+ke liye backend proxy ki zaroorat ho sakti hai.
