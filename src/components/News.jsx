@@ -54,74 +54,34 @@ export default function News() {
   const [activeKeyword, setActiveKeyword] = useState("");
 
   // FETCH NEWS USING VITE PROXY
+// FETCH NEWS USING BACKEND API
 
   const fetchNews = useCallback(
-    async (
-      keyword = "",
-      selectedCategory = "general",
-      signal
-    ) => {
+    async (keyword = "", selectedCategory = "general", signal) => {
       setLoading(true);
       setError("");
 
-      const apiKey =
-        import.meta.env.VITE_GNEWS_API_KEY;
-
-      if (
-        !apiKey ||
-        apiKey === "your_gnews_api_key_here"
-      ) {
-        setArticles([]);
-        setError(
-          "Add your GNews API key to the .env file."
-        );
-        setLoading(false);
-        return;
-      }
-
       try {
-        // IMPORTANT:
-        // Direct GNews URL removed.
-        // Requests now go through the Vite proxy.
-
         const url = keyword
-          ? `/api/news/search?q=${encodeURIComponent(
-              keyword
-            )}&lang=en&max=10&apikey=${encodeURIComponent(
-              apiKey
-            )}`
-          : `/api/news/top-headlines?category=${encodeURIComponent(
-              selectedCategory
-            )}&lang=en&country=pk&max=10&apikey=${encodeURIComponent(
-              apiKey
-            )}`;
+          ? `/api/news?mode=search&q=${encodeURIComponent(keyword)}`
+          : `/api/news?mode=headlines&category=${encodeURIComponent(selectedCategory)}`;
 
-        const response = await fetch(url, {
-          signal,
-        });
+        const response = await fetch(url, { signal });
 
         if (!response.ok) {
           if (response.status === 401) {
-            throw new Error(
-              "Invalid API key. Please check your GNews key."
-            );
+            throw new Error("Invalid GNews API key.");
           }
 
           if (response.status === 403) {
-            throw new Error(
-              "Access denied. Check your GNews API permissions."
-            );
+            throw new Error("GNews API access denied.");
           }
 
           if (response.status === 429) {
-            throw new Error(
-              "GNews request limit reached. Please try again later."
-            );
+            throw new Error("GNews request limit reached.");
           }
 
-          throw new Error(
-            "Could not load news. Please try again."
-          );
+          throw new Error("Could not load news. Please try again.");
         }
 
         const data = await response.json();
@@ -132,13 +92,14 @@ export default function News() {
               id: a.url,
               title: a.title,
               description: a.description,
-              date: new Date(
-                a.publishedAt
-              ).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-                year: "numeric",
-              }),
+              date: new Date(a.publishedAt).toLocaleDateString(
+                "en-US",
+                {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                }
+              ),
               image: a.image,
               url: a.url,
               category: keyword
@@ -149,9 +110,7 @@ export default function News() {
         }
       } catch (err) {
         if (err.name !== "AbortError") {
-          setError(
-            err.message || "Something went wrong."
-          );
+          setError(err.message || "Something went wrong.");
         }
       } finally {
         if (!signal?.aborted) {
@@ -161,8 +120,6 @@ export default function News() {
     },
     []
   );
-
-  // FETCH ON CATEGORY OR SEARCH CHANGE
 
   useEffect(() => {
     const controller = new AbortController();
