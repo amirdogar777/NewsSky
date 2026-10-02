@@ -1,0 +1,269 @@
+/* PREMIUM CREATOR SHOWCASE */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap');
+.creator-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  width: 100%;
+  margin: 65px auto;
+  padding: 95px 25px;
+
+  background: linear-gradient(
+    135deg,
+    #090d21 0%,
+    #181639 48%,
+    #0c1834 100%
+  );
+
+  border: 1px solid rgba(160, 140, 255, 0.25);
+  border-radius: 28px;
+  text-align: center;
+
+  box-shadow: 0 25px 70px
+    rgba(19, 17, 49, 0.23);
+}
+
+/* BACKGROUND GLOW */
+
+.creator-glow {
+  position: absolute;
+  z-index: -1;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.creator-glow-one {
+  top: -180px;
+  left: -100px;
+  background: rgba(108, 83, 255, 0.35);
+}
+
+.creator-glow-two {
+  right: -140px;
+  bottom: -200px;
+  background: rgba(54, 144, 255, 0.24);
+}
+
+.creator-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* TOP BADGE */
+
+.creator-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  padding: 11px 20px;
+  border-radius: 50px;
+
+  color: #d0c4ff;
+  background: rgba(139, 116, 255, 0.12);
+  border: 1px solid rgba(168, 151, 255, 0.35);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* ANIMATED LOGO */
+
+.creator-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90px;
+  height: 90px;
+  margin: 40px auto 25px;
+
+  border-radius: 25px;
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #775bff,
+    #4432a1
+  );
+
+  box-shadow: 0 0 50px
+    rgba(119, 91, 255, 0.45);
+
+  animation: creatorFloat 4s ease-in-out infinite;
+}
+
+@keyframes creatorFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* NAME */
+
+.creator-label {
+  margin: 0 0 16px;
+  color: #aaa9d5;
+  font-size: 12px;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+
+.creator-name {
+  margin: 0;
+
+  font-size: clamp(40px, 7vw, 85px);
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: -3px;
+
+  color: white;
+}
+
+.creator-name span {
+  display: block;
+
+  background: linear-gradient(
+    90deg,
+    #8f84ff,
+    #d5a9ff,
+    #70c4ff
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* DESCRIPTION */
+
+.creator-description {
+  max-width: 540px;
+  margin: 28px auto 35px;
+
+  color: #c0bfd8;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* SKILLS */
+
+.creator-skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.creator-skills span {
+  padding: 12px 20px;
+
+  border: 1px solid
+    rgba(170, 159, 255, 0.25);
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #e6e1ff;
+  border-radius: 50px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.creator-skills span:hover {
+  transform: translateY(-5px);
+
+  background: rgba(126, 103, 255, 0.25);
+
+  border-color: #968aff;
+}
+
+/* FOOTER */
+
+.creator-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 45px;
+  padding-top: 30px;
+
+  border-top: 1px solid
+    rgba(255, 255, 255, 0.1);
+
+  color: #c9c5e4;
+  font-size: 14px;
+}
+
+/* MOBILE DESIGN */
+
+@media (max-width: 600px) {
+  .creator-section {
+    padding: 65px 18px;
+    margin: 40px auto;
+    border-radius: 20px;
+  }
+
+  .creator-name {
+    letter-spacing: -1px;
+  }
+
+  .creator-description {
+    font-size: 14px;
+  }
+
+  .creator-badge {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creator-logo {
+    animation: none;
+  }
+
+  .creator-skills span {
+    transition: none;
+  }
+}.creator-section {
+  background: #10132c !important;
+  color: white !important;
+  padding: 80px 30px !important;
+  border-radius: 25px !important;
+  text-align: center !important;
+}
+
+.creator-name {
+  font-size: 65px !important;
+  color: #c4b5fd !important;
+}.creator-section {
+  font-family: 'Poppins', sans-serif;
+}
+
+.creator-name {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 85px);
+  letter-spacing: -3px;
+}
+
+.creator-label {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 5px;
+}
